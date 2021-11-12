@@ -23,8 +23,7 @@ function getBooksPossessedByAccount(account, books, authors){
   let userBooks = books.filter((book) => 
     book.borrows.some((borrows) => borrows.id === account.id && borrows.returned === false));
   return userBooks.reduce((result, book) => {
-    let bookAuthor = findAuthorById(authors, book.authorId);
-    book.author = bookAuthor;
+    book.author = findAuthorById(authors, book.authorId);
     result.push(book);
     return result;
   }, []);
